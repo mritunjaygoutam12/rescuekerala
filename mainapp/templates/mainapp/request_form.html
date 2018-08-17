@@ -89,6 +89,7 @@
 	window.onload = function(){
         $("#id_requestee_phone").attr('type', 'number');
 		var gpsField = document.getElementById('id_latlng');
+		var district = document.getElementById('id_district');
 		var gpsAccuracyField = document.getElementById('id_latlng_accuracy');
 		gpsField.readOnly = true;
 		gpsAccuracyField.readOnly = true;
@@ -105,6 +106,9 @@
 						var inputElem = $('<input class="form-control" id="id_latlng_display" readonly="true" value="' + response.display_name + '"</input>');
 						$(gpsField).before(inputElem);
 						$(gpsField).hide();
+						var districtInput = $('<input class="form-control" id="id_district"  value="' + response.address.state_district + '"</input>');
+						$(district).before(districtInput);
+            $(district).hide();
 						console.log(response.display_name);
 					})
 					.fail(function(err){
